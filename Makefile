@@ -1,10 +1,10 @@
 SHELL := /bin/bash
 
+GO_IMAGE := golang:1.21.5-bookworm
+
 .PHONY: 
 
 ROOT := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
-
-
 
 # COLORS
 GREEN  := $(shell tput -Txterm setaf 2)
@@ -17,14 +17,17 @@ RESET  := $(shell tput -Txterm sgr0)
 build: test
 	go build -o ./gx cmd/*
 
-
 ## Run the tests
-test:
-	go test -v pkg/gx/*.go
+test: docker
+	docker run --rm -v $(ROOT):/app $(GO_IMAGE) bash -c cd /app && go mod tidy && go test -v pkg/gx/*.go
+	bash ./scripts/e2e-test.sh
+
+## Build docker image
+docker:
+	docker build -t gx:latest .
 
 clean:
 	rm -f ./gx
-
 
 TARGET_MAX_CHAR_NUM=20
 ## Show this help

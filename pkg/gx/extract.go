@@ -10,7 +10,6 @@ import (
 
 // write extraction to host filesystem
 func (e Extraction) Write(target string) error {
-
 	// get absolute path
 	absolute, err := filepath.Abs(target)
 	if err != nil {

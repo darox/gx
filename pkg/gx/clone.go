@@ -19,7 +19,6 @@ func isValidUrl(urlStr string) error {
 
 // clone the repository to the memory filesystem.
 func (r *Repository) Clone() error {
-
 	// create new memory filesystem
 	fs := memfs.New()
 
