@@ -2,7 +2,7 @@
 
 ⚠️ This is a work in progress and some things might not work as expected. For example extracting whole folders, private repos, etc. ⚠️
 
-![gx](https://github.com/darox/gx/assets/gx.gif)
+![gx](https://github.com/darox/gx/blob/main/assets/gx.gif?raw=true)
 
 It stands for git extraction. The idea behind this CLI is to make it easier to selectively download specific files and folders from a git repository into an existing folder structure.
 
