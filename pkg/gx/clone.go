@@ -26,7 +26,8 @@ func (r *Repository) Clone() error {
 
 	// clone the repository to the filesystem
 	_, err := git.Clone(storer, fs, &git.CloneOptions{
-		URL: r.Url,
+		Depth: 1,
+		URL:   r.Url,
 	})
 
 	if err != nil {
