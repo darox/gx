@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
 GO_IMAGE := golang:1.21.5-bookworm
+GOPATH := $(shell go env GOPATH)
 
 .PHONY: 
 
@@ -16,6 +17,10 @@ RESET  := $(shell tput -Txterm sgr0)
 ## Build the go binary
 build: test
 	go build -o ./gx cmd/*
+
+## Install the go binary
+install:
+	make && mv gx $(GOPATH)/bin
 
 ## Run the tests
 test: docker
